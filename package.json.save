@@ -1,0 +1,15 @@
+{
+  "name": "skill-proof-root",
+  "version": "1.0.0",
+  "description": "Root package.json to run both client and server together",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix skillproof/client\" \"npm run dev --prefix skillproof/server\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}Ha ha

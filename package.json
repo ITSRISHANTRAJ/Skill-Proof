@@ -1,0 +1,26 @@
+{
+  "name": "skill-proof",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "next": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@supabase/supabase-js": "^2.0.0",
+    "@supabase/auth-helpers-nextjs": "^0.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

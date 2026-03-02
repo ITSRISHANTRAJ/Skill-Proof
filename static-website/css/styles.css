@@ -1,0 +1,440 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-800: #1f2937;
+    --color-accent: #000000;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-fast);
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navbar */
+.navbar {
+    border-bottom: 1px solid var(--color-gray-200);
+    background: var(--color-white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100px;
+    padding: 1rem 2rem;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-500);
+}
+
+.nav-link:hover {
+    color: var(--color-black);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-gray-800);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-gray-50);
+}
+
+/* Hero Section */
+.hero {
+    padding: 8rem 0 6rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    font-weight: 800;
+}
+
+.hero h1 .accent {
+    color: var(--color-accent);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--color-gray-500);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Features Grid */
+.features {
+    padding: 5rem 0;
+    background-color: var(--color-white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    padding: 2rem;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 12px;
+    background: var(--color-white);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+    display: none;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    color: var(--color-gray-500);
+    font-size: 0.95rem;
+}
+
+/* Auth Pages */
+.auth-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    background-color: var(--color-gray-50);
+}
+
+.auth-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: var(--color-gray-500);
+    font-size: 0.875rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-gray-800);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color var(--transition-fast);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-black);
+    box-shadow: 0 0 0 1px var(--color-black);
+}
+
+.auth-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+}
+
+.auth-footer a {
+    color: var(--color-black);
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--color-gray-200);
+    padding: 3rem 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+}
+
+/* Dashboard Minimal */
+.dashboard-header {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.dashboard-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-content {
+    padding: 3rem 0;
+}
+
+/* Role Toggle */
+.role-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.role-btn {
+    padding: 0.5rem;
+    border: 1px solid var(--color-gray-300);
+    background: var(--color-white);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--color-gray-500);
+    transition: all var(--transition-fast);
+}
+
+.role-btn.active {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Showcase & Images */
+.showcase-sections {
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+}
+
+.showcase-row {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.showcase-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.showcase-content {
+    flex: 1;
+}
+
+.showcase-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.showcase-content p {
+    font-size: 1.125rem;
+    color: var(--color-gray-500);
+}
+
+.showcase-image,
+.hero-image-wrapper {
+    flex: 1;
+    border-radius: 16px;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+}
+
+.showcase-image img,
+.hero-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+    border-radius: 12px;
+}
+
+.scroll-3d {
+    will-change: transform;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .showcase-row,
+    .showcase-row.reverse {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

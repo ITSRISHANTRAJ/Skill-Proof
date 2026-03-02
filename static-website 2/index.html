@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillProof - Trust Infrastructure for Digital Skills</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/logo.png" alt="SkillProof Logo"
+                    style="height: 80px; object-fit: cover; border-radius: 12px;">
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="login.html" class="nav-link">Login</a>
+                <a href="login.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero container fade-in">
+            <h1>The Trust Infrastructure for <span class="accent">Verified Editors</span></h1>
+            <p class="fade-in delay-1">SkillProof provides cryptographically secure, verifiable proof of talent. Built
+                for editors who want to stand out, and hiring teams who need certainty.</p>
+            <div class="hero-actions fade-in delay-2">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScjYioj0rifIrJKk-1NzBg19XszcpyEJZOtr_qLLFlO6T1spg/viewform?usp=header"
+                    target="_blank" class="btn btn-primary">Get Verified as an Editor</a>
+                <a href="https://forms.gle/zxdwwzQBwAcRCurU7" target="_blank" class="btn btn-outline">Hire Verified
+                    Editors</a>
+            </div>
+            <div class="hero-image-wrapper scroll-3d fade-in delay-3"
+                style="margin-top: 5rem; display: flex; justify-content: center;">
+                <img src="images/hero1.jpg" alt="SkillProof Workspace"
+                    style="width: 100%; max-width: 1100px; object-fit: cover; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <section class="showcase-sections container">
+            <div class="showcase-row fade-in delay-1">
+                <div class="showcase-content">
+                    <h2>For Hiring Teams</h2>
+                    <p>Access a curated network of elite video editors. Stop reviewing unqualified portfolios and start
+                        hiring with absolute certainty. Every editor in our network undergoes rigorous cryptographic
+                        verification.</p>
+                </div>
+                <div class="showcase-image scroll-3d" style="display: flex; justify-content: center;">
+                    <img src="images/hero2.jpg" alt="Hiring Teams"
+                        style="width: 100%; max-width: 500px; object-fit: cover; border-radius: 12px;">
+                </div>
+            </div>
+
+            <div class="showcase-row reverse fade-in delay-2">
+                <div class="showcase-content">
+                    <h2>For Professionals</h2>
+                    <p>Submit your finest work and earn a permanent, cryptographically verified badge of excellence.
+                        Stand out in a crowded market and instantly signal your elite status to top-tier hiring teams
+                        globally.</p>
+                </div>
+                <div class="showcase-image scroll-3d" style="display: flex; justify-content: center;">
+                    <img src="images/hero3.jpg" alt="Professionals"
+                        style="width: 100%; max-width: 500px; object-fit: cover; border-radius: 12px;">
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card fade-in delay-1">
+                        <h3>Submit Proof</h3>
+                        <p>Professionals link their portfolios and specify domains for review.</p>
+                    </div>
+                    <div class="feature-card fade-in delay-2">
+                        <h3>Rigorous Verification</h3>
+                        <p>Our network manually audits and approves top-tier work with strict guidelines.</p>
+                    </div>
+                    <div class="feature-card fade-in delay-3">
+                        <h3>Instant Trust</h3>
+                        <p>Employers access a curated pool of guaranteed excellence globally.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content bg-white">
+            <div>&copy; 2026 SkillProof. All rights reserved.</div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Privacy</a>
+                <a href="#" class="nav-link">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollElements = document.querySelectorAll('.scroll-3d');
+            window.addEventListener('scroll', () => {
+                requestAnimationFrame(() => {
+                    scrollElements.forEach(el => {
+                        const rect = el.getBoundingClientRect();
+                        const viewHeight = window.innerHeight;
+                        if (rect.top < viewHeight && rect.bottom > 0) {
+                            const centerOffset = (rect.top + rect.height / 2) - (viewHeight / 2);
+                            const y = centerOffset * 0.08;
+                            el.style.transform = `translateY(${y}px)`;
+                        }
+                    });
+                });
+            }, { passive: true });
+        });
+    </script>
+</body>
+
+</html>

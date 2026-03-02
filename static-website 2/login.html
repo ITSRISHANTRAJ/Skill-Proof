@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SkillProof</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="images/logo.png" alt="SkillProof Logo"
+                    style="height: 80px; object-fit: cover; border-radius: 12px;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-wrapper fade-in">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Welcome back</h2>
+                <p>Enter your credentials to access your account</p>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" class="form-control" required placeholder="name@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">Sign In</button>
+            </form>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="register.html">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
