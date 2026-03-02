@@ -1,30 +1,47 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { useRouter } from 'next/router';
-import { requireAuth } from '../lib/auth';
+import { useSession } from '@supabase/auth-helpers-react';
 
-export default function EditorDashboard({ user, profile }) {
+export default function EditorDashboard() {
+  const session = useSession();
+  const router = useRouter();
+  const [user, setUser] = useState(null);
+  const [userRole, setUserRole] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [editor, setEditor] = useState(null);
   const [businessEmail, setBusinessEmail] = useState('');
   const [experience, setExperience] = useState('');
   const [types, setTypes] = useState('');
   const [portfolioUrl, setPortfolioUrl] = useState('');
-  const router = useRouter();
 
   useEffect(() => {
-    async function load() {
-      const { data } = await supabase.from('editors').select('*').eq('id', user.id).single();
+    async function checkAuth() {
+      if (!session) {
+        router.push('/login');
+        return;
+      }
+      const { data: profile } = await supabase.from('profiles').select('role').eq('id', session.user.id).single();
+      if (profile?.role !== 'editor') {
+        router.push('/hirer-dashboard');
+        return;
+      }
+      setUser(session.user);
+      setUserRole(profile.role);
+      const { data } = await supabase.from('editors').select('*').eq('id', session.user.id).single();
       if (data) {
         setEditor(data);
         setBusinessEmail(data.business_email||'');
         setExperience(data.editing_experience||'');
         setTypes((data.content_types||[]).join(','));
       }
+      setLoading(false);
     }
-    load();
-  }, [user.id]);
+    checkAuth();
+  }, [session, router]);
 
   const saveProfile = async () => {
+    if (!user) return;
     const content_types = types.split(',').map(s=>s.trim()).filter(Boolean);
     await supabase.from('editors').upsert({
       id: user.id,
@@ -35,10 +52,11 @@ export default function EditorDashboard({ user, profile }) {
   };
 
   const submitTest = async () => {
+    if (!user) return;
     const { data:cur } = await supabase.from('editors').select('portfolio_links').eq('id', user.id).single();
     const links = cur?.portfolio_links||[];
     links.push(portfolioUrl);
-    const score = Math.floor(Math.random()*100);
+    const score = Array.from(portfolioUrl).reduce((a,c)=>a+c.charCodeAt(0),0) % 101;
     await supabase.from('editors').upsert({
       id: user.id,
       portfolio_links: links,
@@ -47,7 +65,11 @@ export default function EditorDashboard({ user, profile }) {
       score
     });
     setEditor({ ...editor, portfolio_links: links, challenge_completed:true, score });
+    router.push('/editor-dashboard');
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (!user) return null;
 
   return (
     <div className="container">
@@ -73,7 +95,3 @@ export default function EditorDashboard({ user, profile }) {
     </div>
   );
 }
-
-export const getServerSideProps = async (ctx) => {
-  return requireAuth(ctx, 'editor');
-};
